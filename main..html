@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Leche</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h2 { color: #2c3e50; margin-bottom: 1.5rem; }
+        .input-group { margin-bottom: 1rem; text-align: left; }
+        label { display: block; margin-bottom: 5px; color: #7f8c8d; font-size: 0.9rem; }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        input:focus { border-color: #3498db; }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover { background-color: #2980b9; }
+        #resultado {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #e1f5fe;
+            border-radius: 8px;
+            color: #01579b;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🥛 Leche-Calculator</h2>
+    <div class="input-group">
+        <label for="precio">Precio del artículo (UYU)</label>
+        <input type="number" id="precio" placeholder="Ej: 2500" step="any">
+    </div>
+    <button onclick="calcularLeche()">¿Cuántos litros son?</button>
+    
+    <div id="resultado"></div>
+</div>
+
+<script>
+    function calcularLeche() {
+        const PRECIO_LITRO = 45.15;
+        const precioArticulo = document.getElementById('precio').value;
+        const divResultado = document.getElementById('resultado');
+
+        if (precioArticulo > 0) {
+            const litros = (precioArticulo / PRECIO_LITRO).toFixed(2);
+            divResultado.style.display = 'block';
+            divResultado.innerHTML = `Ese gusto te cuesta <br> <span style="font-size: 1.5rem;">${litros} litros</span> <br> de leche Conaprole.`;
+        } else {
+            alert("Por favor, ingresa un precio válido.");
+        }
+    }
+</script>
+
+</body>
+</html>
